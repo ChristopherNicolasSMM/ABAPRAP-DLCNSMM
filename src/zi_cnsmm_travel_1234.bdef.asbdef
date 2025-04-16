@@ -1,0 +1,14 @@
+managed implementation in class zbp_i_cnsmm_travel_1234 unique;
+strict ( 2 );
+
+define behavior for ZI_CNSMM_TRAVEL_1234 //alias <alias_name>
+persistent table /dmo/travel_m
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+//  delete;
+  field ( readonly ) TravelId;
+}
