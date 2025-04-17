@@ -1,0 +1,5 @@
+@EndUserText.label: 'UI - Certificados'
+define service ZUICNSMM_CERTIF {
+  expose ZCCNSMM_CERTIFWITHPRODUCT;
+  expose ZCCNSMM_CERTIFSTWITHPRODUCT;
+}

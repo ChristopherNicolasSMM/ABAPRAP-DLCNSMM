@@ -1,0 +1,25 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZCCNSMM_CERTIFWITHPRODUCT alias Certificate
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Stats { create; with draft;}
+
+  use action Edit;
+  use action Activate;
+  use action Prepare;
+  use action Discard;
+  use action Resume;
+}
+
+define behavior for ZCCNSMM_CERTIFSTWITHPRODUCT alias CertificateST
+{
+  use delete;
+
+  use association _Certif;
+}

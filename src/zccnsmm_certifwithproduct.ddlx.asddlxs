@@ -1,0 +1,92 @@
+@Metadata.layer: #CUSTOMER
+
+@UI : {
+        headerInfo: {
+            typeName: 'Certificado',
+            typeNamePlural: 'Certificados',
+            imageUrl: 'Icon',
+            title: { label: 'Certificado', value: 'Matnr', type: #STANDARD }
+        }
+}
+
+
+annotate entity ZCCNSMM_CERTIFWITHPRODUCT with
+{
+
+  @UI.facet: [
+    {   purpose : #HEADER,
+        type: #FIELDGROUP_REFERENCE,
+        importance: #HIGH,
+        position: 10,
+        label: 'Informações Técnicas',
+        targetQualifier: 'HeaderData'},
+
+    {   id: 'Certificate',
+        purpose : #STANDARD,
+        type: #IDENTIFICATION_REFERENCE,
+        position: 20,
+        label: 'Gerenciamento do Certificado'
+    },
+    {   //id: 'CertificateState',
+        purpose : #STANDARD,
+        type: #FIELDGROUP_REFERENCE,
+        position: 30,
+        importance: #HIGH,
+        label: 'Detalhes',
+        targetQualifier: 'Detail'
+    },    
+    {   id: 'CertificateState',
+        purpose : #STANDARD,
+        type: #LINEITEM_REFERENCE,
+        position: 40,
+        label: 'Modificações de Status',
+        targetElement: '_Stats'
+    }
+  ]
+
+  @UI.hidden: true
+  CertUuid;
+
+  @UI.selectionField: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @UI.lineItem: [{position: 20}]
+  @UI.fieldGroup: [{ qualifier: 'HeaderData'  }]
+  @EndUserText.label: 'Material'
+  Matnr;
+
+  @UI.selectionField: [{ position: 30 }]
+
+  @UI.lineItem: [{position: 30}]
+  @EndUserText.label: 'Descrição'
+  @UI.fieldGroup: [{ qualifier: 'Detail'  }]
+  Description;
+
+
+  @UI.identification: [{ position: 40 }]
+  @EndUserText.label: 'Versão'
+  Version;
+
+  @UI.identification: [{ position: 50 }]
+  @EndUserText.label: 'Certificado CE'
+  CertCe;
+
+  @UI.identification: [{ position: 60 }]
+  @EndUserText.label: 'Certificado Fcc'
+  CertFcc;
+
+  @UI.identification: [{ position: 70 }]
+  @EndUserText.label: 'Certificado GS'
+  CertGs;
+
+  @UI.identification: [{ position: 80 }]
+  @EndUserText.label: 'Certificado ISO'
+  CertIso;
+
+  @UI.identification: [{ position: 90 }]
+  @EndUserText.label: 'Certificado '
+  CertStatus;
+
+  @UI.identification: [{ position: 100 }]
+  @EndUserText.label: 'Certificado TUEV'
+  CertTuev;
+}

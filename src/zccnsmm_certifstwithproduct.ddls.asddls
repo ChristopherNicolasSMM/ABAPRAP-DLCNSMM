@@ -1,6 +1,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Consumption - Status Certificados'
 @Metadata.ignorePropagatedAnnotations: true
+@Metadata.allowExtensions: true
 define view entity ZCCNSMM_CERTIFSTWITHPRODUCT as projection on ZICNSMM_CERTIFSTWITHPRODUCT
 {
     key StateUuid,

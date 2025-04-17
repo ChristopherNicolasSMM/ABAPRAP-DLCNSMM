@@ -26,6 +26,7 @@ define root view entity ZICNSMM_CERTIFWITHPRODUCT
       CertTuev,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       LocalLastChangedAt,
+      'sap-icon://shield' as Icon,
       
       //Associations
       _Prod,

@@ -1,0 +1,67 @@
+managed implementation in class zbp_icnsmm_certifwithproduct unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZICNSMM_CERTIFWITHPRODUCT alias Certificate
+persistent table zcnsmm_certif
+draft table zbcnsmm_certif
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  association _Stats { create; with draft; }
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( numbering : managed, readonly ) CertUuid;
+  field ( readonly ) Description;
+  field ( mandatory ) Matnr;
+
+  mapping for zcnsmm_certif
+    {
+      CertUuid           = cert_uuid;
+      Matnr              = matnr;
+      Version            = version;
+      CertStatus         = cert_status;
+      CertCe             = cert_ce;
+      CertGs             = cert_gs;
+      CertFcc            = cert_fcc;
+      CertIso            = cert_iso;
+      CertTuev           = cert_tuev;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}
+
+define behavior for ZICNSMM_CERTIFSTWITHPRODUCT alias CertificateST
+persistent table zcnsmm_certif_st
+draft table zbcnsmm_certifst
+lock dependent by _Certif
+authorization dependent by _Certif
+//etag master <field_name>
+{
+  delete;
+  field ( readonly ) CertUuid;
+  field ( numbering : managed, readonly ) StateUuid;
+  association _Certif;
+
+  mapping for zcnsmm_certif_st
+    {
+      StateUuid          = state_uuid;
+      CertUuid           = cert_uuid;
+      Matnr              = matnr;
+      Version            = version;
+      Status             = status;
+      StatusOld          = status_old;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

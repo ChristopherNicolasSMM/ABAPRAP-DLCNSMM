@@ -9,7 +9,8 @@ CLASS zcl_cdt_products DEFINITION
   PROTECTED SECTION.
   PRIVATE SECTION.
     METHODS: set_products,
-    set_certificates.
+      set_certificates,
+      detele_all.
 ENDCLASS.
 
 
@@ -20,18 +21,19 @@ CLASS zcl_cdt_products IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
     out->write( 'Iniciando a execução' ).
-    "me->set_products( ).
-    me->set_certificates(  ).
+    "me->detele_all( ).
+    me->set_products( ).
+    "me->set_certificates(  ).
     out->write( 'Encerramento da execução' ).
 
   ENDMETHOD.
   METHOD set_products.
 
-    types: tt_products type table of zcnsmm_product WITH DEFAULT KEY.
+    TYPES: tt_products TYPE TABLE OF zcnsmm_product WITH DEFAULT KEY.
 
-    delete from zcnsmm_product.
+    DELETE FROM zcnsmm_product.
 
-    DATA(lt_products) = value tt_products(
+    DATA(lt_products) = VALUE tt_products(
     ( matnr = '1' description = 'Celular' language = 'P' )
     ( matnr = '2' description = 'Televisor' language = 'P' )
     ( matnr = '3' description = 'Computador' language = 'P' )
@@ -41,22 +43,39 @@ CLASS zcl_cdt_products IMPLEMENTATION.
     ( matnr = '3' description = 'Cumputer' language = 'E' )
     ).
 
-    modify zcnsmm_product from table @lt_products.
+    MODIFY zcnsmm_product FROM TABLE @lt_products.
 
   ENDMETHOD.
 
   METHOD set_certificates.
-    types: tt_certif type table of zcnsmm_certif WITH DEFAULT KEY.
+    TYPES: tt_certif TYPE TABLE OF zcnsmm_certif WITH DEFAULT KEY.
+    TYPES: tt_certif_st TYPE TABLE OF zcnsmm_certif_st WITH DEFAULT KEY.
 
-    delete from zcnsmm_certif.
+    DELETE FROM zcnsmm_certif.
 
-    DATA(lt_certif) = value tt_certif(
+    DATA(lt_certif) = VALUE tt_certif(
     ( cert_uuid = '1' matnr = '1'  )
     ( cert_uuid = '2' matnr = '2'  )
     ( cert_uuid = '3' matnr = '3'  )
     ).
 
-    modify zcnsmm_certif from table @lt_certif.
+    MODIFY zcnsmm_certif FROM TABLE @lt_certif.
+
+    DELETE FROM zcnsmm_certif_st.
+    DATA(lt_certif_st) = VALUE tt_certif_st(
+    ( state_uuid = '1' cert_uuid = '1' matnr = '1'  )
+    ( state_uuid = '2' cert_uuid = '2' matnr = '2'  )
+    ( state_uuid = '3' cert_uuid = '3' matnr = '3'  )
+    ( state_uuid = '4' cert_uuid = '3' matnr = '3'  )
+    ).
+    MODIFY zcnsmm_certif_st FROM TABLE @lt_certif_st.
+
+  ENDMETHOD.
+
+  METHOD detele_all.
+    DELETE FROM zcnsmm_product.
+    DELETE FROM zcnsmm_certif.
+    DELETE FROM zcnsmm_certif_st.
   ENDMETHOD.
 
 ENDCLASS.
