@@ -34,13 +34,13 @@ CLASS zcl_cdt_products IMPLEMENTATION.
     DELETE FROM zcnsmm_product.
 
     DATA(lt_products) = VALUE tt_products(
-    ( matnr = '1' description = 'Celular' language = 'P' )
-    ( matnr = '2' description = 'Televisor' language = 'P' )
-    ( matnr = '3' description = 'Computador' language = 'P' )
+    ( matnr = '000000000000000001' description = 'Celular' language = 'P' )
+    ( matnr = '000000000000000002' description = 'Televisor' language = 'P' )
+    ( matnr = '000000000000000003' description = 'Computador' language = 'P' )
 
-    ( matnr = '1' description = 'Phone' language = 'E' )
-    ( matnr = '2' description = 'Television' language = 'E' )
-    ( matnr = '3' description = 'Cumputer' language = 'E' )
+    ( matnr = '000000000000000001' description = 'Phone' language = 'E' )
+    ( matnr = '000000000000000002' description = 'Television' language = 'E' )
+    ( matnr = '000000000000000003' description = 'Cumputer' language = 'E' )
     ).
 
     MODIFY zcnsmm_product FROM TABLE @lt_products.
@@ -54,19 +54,19 @@ CLASS zcl_cdt_products IMPLEMENTATION.
     DELETE FROM zcnsmm_certif.
 
     DATA(lt_certif) = VALUE tt_certif(
-    ( cert_uuid = '1' matnr = '1'  )
-    ( cert_uuid = '2' matnr = '2'  )
-    ( cert_uuid = '3' matnr = '3'  )
+    ( cert_uuid = '1' matnr = '000000000000000001'  )
+    ( cert_uuid = '2' matnr = '000000000000000002'  )
+    ( cert_uuid = '3' matnr = '000000000000000003'  )
     ).
 
     MODIFY zcnsmm_certif FROM TABLE @lt_certif.
 
     DELETE FROM zcnsmm_certif_st.
     DATA(lt_certif_st) = VALUE tt_certif_st(
-    ( state_uuid = '1' cert_uuid = '1' matnr = '1'  )
-    ( state_uuid = '2' cert_uuid = '2' matnr = '2'  )
-    ( state_uuid = '3' cert_uuid = '3' matnr = '3'  )
-    ( state_uuid = '4' cert_uuid = '3' matnr = '3'  )
+    ( state_uuid = '1' cert_uuid = '1' matnr = '000000000000000001'  )
+    ( state_uuid = '2' cert_uuid = '2' matnr = '000000000000000002'  )
+    ( state_uuid = '3' cert_uuid = '3' matnr = '000000000000000003'  )
+    ( state_uuid = '4' cert_uuid = '3' matnr = '000000000000000003'  )
     ).
     MODIFY zcnsmm_certif_st FROM TABLE @lt_certif_st.
 

@@ -5,7 +5,8 @@ with draft;
 define behavior for ZICNSMM_CERTIFWITHPRODUCT alias Certificate
 persistent table zcnsmm_certif
 draft table zbcnsmm_certif
-lock master total etag LocalLastChangedAt
+lock master
+total etag LocalLastChangedAt
 authorization master ( instance )
 //etag master <field_name>
 {
@@ -21,14 +22,17 @@ authorization master ( instance )
   draft action Resume;
   draft determine action Prepare;
 
+  determination setInitialValues on modify { create;}
+
   field ( numbering : managed, readonly ) CertUuid;
-  field ( readonly ) Description;
+  field ( readonly ) Description, Version;
   field ( mandatory ) Matnr;
 
   mapping for zcnsmm_certif
     {
       CertUuid           = cert_uuid;
       Matnr              = matnr;
+      // Description        =
       Version            = version;
       CertStatus         = cert_status;
       CertCe             = cert_ce;
