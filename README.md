@@ -6,13 +6,28 @@ SAP Trial & Cloud BTP
 
 ## 📂 Estrutura do Projeto
 
+```
 /src/
-├── behavior_definitions/ # Definições de comportamento
-├── behavior_implementations/ # Implementações de comportamento
-├── data_definitions/ # Definições de CDS
-├── service_definitions/ # Definições de serviços OData
-├── service_bindings/ # Configurações de binding
-└── metadata_extensions/ # Anotações para UI Fiori
+│
+├── behavior_definitions/         # Behavior Definitions (BDEF) - Definem o comportamento das entidades
+├── behavior_implementations/     # Behavior Implementations (BIMP) - Lógica dos comportamentos
+├── data_definitions/             # Data Definitions (DDEF) - CDS Views e estruturas de dados
+├── service_definitions/          # Service Definitions (SDEF) - Definições dos serviços OData
+├── service_bindings/             # Service Bindings (SBIND) - Configurações de publicação
+├── metadata_extensions/          # Metadata Extensions (MEXT) - Anotações para UI Fiori
+├── control_structures/           # Includes e estruturas auxiliares
+├── test_classes/                 # Testes ABAP Unit
+└── documentation/                # Documentação técnica do projeto
+```
+
+**Convenções:**
+- `BDEF`: Arquivos .bdef
+- `BIMP`: Arquivos .bimp
+- `DDEF`: Arquivos .ddef
+- `SDEF`: Arquivos .sdef
+- `SBIND`: Arquivos .sbinding
+- `MEXT`: Arquivos .mext
+
 
 
 
