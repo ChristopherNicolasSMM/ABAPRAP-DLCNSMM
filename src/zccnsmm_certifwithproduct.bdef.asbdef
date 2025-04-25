@@ -15,6 +15,11 @@ define behavior for ZCCNSMM_CERTIFWITHPRODUCT alias Certificate
   use action Prepare;
   use action Discard;
   use action Resume;
+
+  //Actions customizing declaradas no Root
+  use action  NewVersion;
+  use action  ActiveVersion;
+  use action  InactiveVersion;
 }
 
 define behavior for ZCCNSMM_CERTIFSTWITHPRODUCT alias CertificateST

@@ -24,6 +24,12 @@ authorization master ( instance )
 
   determination setInitialValues on modify { create;}
 
+  validation checkMaterial on save { field Matnr; create; update;}
+
+  action ( features: instance ) NewVersion result [1] $self;
+  action ( features: instance ) ActiveVersion result [1] $self;
+  action ( features: instance ) InactiveVersion result [1] $self;
+
   field ( numbering : managed, readonly ) CertUuid;
   field ( readonly ) Description, Version;
   field ( mandatory ) Matnr;

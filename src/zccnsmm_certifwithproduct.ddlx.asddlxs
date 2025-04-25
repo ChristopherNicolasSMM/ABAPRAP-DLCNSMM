@@ -34,7 +34,7 @@ annotate entity ZCCNSMM_CERTIFWITHPRODUCT with
         importance: #HIGH,
         label: 'Detalhes',
         targetQualifier: 'Detail'
-    },    
+    },
     {   id: 'CertificateState',
         purpose : #STANDARD,
         type: #LINEITEM_REFERENCE,
@@ -48,8 +48,10 @@ annotate entity ZCCNSMM_CERTIFWITHPRODUCT with
   CertUuid;
 
   @UI.selectionField: [{ position: 20 }]
-  @UI.identification: [{ position: 20 }]
-  @UI.lineItem: [{position: 20}]
+  @UI.identification: [{ position: 20 },
+                       { type: #FOR_ACTION, dataAction: 'NewVersion', label: 'Nova Versão' } ]
+  @UI.lineItem: [{position: 20},
+                 { type: #FOR_ACTION, dataAction: 'NewVersion', label: 'Nova Versão' } ]
   @UI.fieldGroup: [{ qualifier: 'HeaderData'  }]
   @EndUserText.label: 'Material'
   Matnr;
@@ -62,9 +64,15 @@ annotate entity ZCCNSMM_CERTIFWITHPRODUCT with
   Description;
 
 
-  @UI.identification: [{ position: 40 }]
+  @UI.identification: [{ position: 30 }]
+  @UI.fieldGroup: [{ qualifier: 'HeaderData'  }]
   @EndUserText.label: 'Versão'
   Version;
+
+  @UI.identification: [{ position: 41 }]
+  @UI.fieldGroup: [{ qualifier: 'HeaderData'  }]
+  @EndUserText.label: 'Certificado '
+  CertStatus;
 
   @UI.identification: [{ position: 50 }]
   @EndUserText.label: 'Certificado CE'
@@ -81,10 +89,6 @@ annotate entity ZCCNSMM_CERTIFWITHPRODUCT with
   @UI.identification: [{ position: 80 }]
   @EndUserText.label: 'Certificado ISO'
   CertIso;
-
-  @UI.identification: [{ position: 90 }]
-  @EndUserText.label: 'Certificado '
-  CertStatus;
 
   @UI.identification: [{ position: 100 }]
   @EndUserText.label: 'Certificado TUEV'
